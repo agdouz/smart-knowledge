@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Mail, Clock, Award, AlertTriangle, BookOpen, Lightbulb, Phone, MapPin, Download, GraduationCap, FileText, Users, Star, RotateCcw } from "lucide-react";
+import { ArrowLeft, Mail, Clock, Award, AlertTriangle, BookOpen, Lightbulb, Phone, MapPin, Download, GraduationCap, FileText, Users, Star, RotateCcw, Video, File, ExternalLink } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import DashboardLayout from "@/components/DashboardLayout";
 import { professors } from "@/data/mockData";
@@ -279,6 +279,32 @@ export default function ProfessorProfile() {
                 />
               </div>
             </div>
+          </div>
+        </motion.div>
+
+        {/* Supports de cours (PDFs & Videos) */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="bg-card border border-border rounded-2xl p-5 mb-8">
+          <h3 className="text-sm font-semibold text-foreground mb-4 flex items-center gap-2">
+            <BookOpen className="h-4 w-4 text-primary" /> Supports de Cours (Ressources Numériques)
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4">
+            {prof.materials && prof.materials.map((mat, i) => (
+              <div key={i} className="flex gap-3 p-3 bg-secondary/50 rounded-xl">
+                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  {mat.type === "video" ? <Video className="h-5 w-5 text-primary" /> : <File className="h-5 w-5 text-primary" />}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-sm font-medium text-foreground truncate">{mat.title}</h4>
+                  <p className="text-xs text-muted-foreground mt-0.5">{mat.type === "video" ? "Enregistrement vidéo" : "Document PDF"}</p>
+                </div>
+                <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+                  <ExternalLink className="h-4 w-4" />
+                </Button>
+              </div>
+            ))}
+            {(!prof.materials || prof.materials.length === 0) && (
+              <p className="text-sm text-muted-foreground col-span-full">Aucun support de cours externe pour le moment.</p>
+            )}
           </div>
         </motion.div>
       </div>
