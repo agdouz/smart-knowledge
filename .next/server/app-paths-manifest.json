@@ -1,9 +1,0 @@
-{
-  "/professors/page": "app/professors/page.js",
-  "/professors/[id]/page": "app/professors/[id]/page.js",
-  "/filieres/page": "app/filieres/page.js",
-  "/espace-perso/page": "app/espace-perso/page.js",
-  "/page": "app/page.js",
-  "/matieres/page": "app/matieres/page.js",
-  "/schedule/page": "app/schedule/page.js"
-}
