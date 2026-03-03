@@ -1,0 +1,111 @@
+export interface Professor {
+  id: string;
+  name: string;
+  specialty: string;
+  weeklyHours: number;
+  performanceScore: number;
+  riskLevel: "Low" | "Medium" | "High";
+  email: string;
+  department: string;
+  courses: string[];
+  yearsOfService: number;
+  avatar: string;
+  phone: string;
+  office: string;
+  bio: string;
+  education: string[];
+  publications: number;
+  researchInterests: string[];
+  studentRating: number;
+  totalStudents: number;
+  rattrapageRate: number;
+}
+
+export const professors: Professor[] = [
+  { id: "1", name: "Dr. Sarah Chen", specialty: "Machine Learning", weeklyHours: 22, performanceScore: 94, riskLevel: "Low", email: "s.chen@uni.edu", department: "Computer Science", courses: ["ML 101", "Deep Learning", "AI Ethics"], yearsOfService: 8, avatar: "SC", phone: "+1 (555) 234-5678", office: "Building A, Room 305", bio: "Dr. Chen is a leading researcher in Machine Learning with over 50 published papers. She specializes in neural architecture search and federated learning.", education: ["PhD Computer Science, Stanford University", "MSc AI, MIT", "BSc Mathematics, UC Berkeley"], publications: 52, researchInterests: ["Neural Architecture Search", "Federated Learning", "AutoML"], studentRating: 4.8, totalStudents: 180, rattrapageRate: 15 },
+  { id: "2", name: "Dr. James Wilson", specialty: "Data Science", weeklyHours: 30, performanceScore: 78, riskLevel: "High", email: "j.wilson@uni.edu", department: "Computer Science", courses: ["Data Mining", "Statistics", "Big Data", "Python Lab"], yearsOfService: 12, avatar: "JW", phone: "+1 (555) 345-6789", office: "Building B, Room 210", bio: "Dr. Wilson brings 12 years of academic and industry experience in Data Science. He previously worked at Google Research before joining academia.", education: ["PhD Statistics, Harvard University", "MSc Data Science, Columbia University", "BSc Computer Science, Georgia Tech"], publications: 38, researchInterests: ["Big Data Analytics", "Statistical Learning", "Data Visualization"], studentRating: 4.2, totalStudents: 240, rattrapageRate: 22 },
+  { id: "3", name: "Dr. Amira Hassan", specialty: "Cybersecurity", weeklyHours: 18, performanceScore: 91, riskLevel: "Low", email: "a.hassan@uni.edu", department: "Information Security", courses: ["Network Security", "Cryptography"], yearsOfService: 5, avatar: "AH", phone: "+1 (555) 456-7890", office: "Building C, Room 112", bio: "Dr. Hassan is an expert in post-quantum cryptography and network security protocols. Her research has been funded by NSF and DARPA.", education: ["PhD Cybersecurity, Carnegie Mellon University", "MSc Information Security, ETH Zurich", "BSc Computer Engineering, AUC"], publications: 28, researchInterests: ["Post-Quantum Cryptography", "Network Intrusion Detection", "Zero Trust Architecture"], studentRating: 4.7, totalStudents: 95, rattrapageRate: 8 },
+  { id: "4", name: "Dr. Michael Park", specialty: "Software Engineering", weeklyHours: 26, performanceScore: 82, riskLevel: "Medium", email: "m.park@uni.edu", department: "Computer Science", courses: ["SE Principles", "Agile Dev", "Cloud Computing"], yearsOfService: 10, avatar: "MP", phone: "+1 (555) 567-8901", office: "Building A, Room 418", bio: "Dr. Park focuses on cloud-native architectures and DevOps practices. He has consulted for major tech companies including Microsoft and Amazon.", education: ["PhD Software Engineering, University of Toronto", "MSc Computer Science, KAIST", "BSc Software Engineering, Seoul National University"], publications: 31, researchInterests: ["Cloud-Native Architecture", "DevOps & CI/CD", "Microservices Patterns"], studentRating: 4.4, totalStudents: 165, rattrapageRate: 12 },
+  { id: "5", name: "Dr. Elena Petrova", specialty: "Natural Language Processing", weeklyHours: 20, performanceScore: 96, riskLevel: "Low", email: "e.petrova@uni.edu", department: "AI Research", courses: ["NLP Fundamentals", "Computational Linguistics"], yearsOfService: 6, avatar: "EP", phone: "+1 (555) 678-9012", office: "Building D, Room 201", bio: "Dr. Petrova is a pioneer in transformer-based language models. Her work on multilingual NLP has been cited over 3,000 times.", education: ["PhD Computational Linguistics, University of Cambridge", "MSc NLP, University of Edinburgh", "BSc Linguistics, Moscow State University"], publications: 45, researchInterests: ["Large Language Models", "Multilingual NLP", "Sentiment Analysis"], studentRating: 4.9, totalStudents: 110, rattrapageRate: 5 },
+  { id: "6", name: "Dr. Robert Kim", specialty: "Computer Vision", weeklyHours: 28, performanceScore: 75, riskLevel: "High", email: "r.kim@uni.edu", department: "AI Research", courses: ["Image Processing", "CV Applications", "Robotics"], yearsOfService: 15, avatar: "RK", phone: "+1 (555) 789-0123", office: "Building D, Room 315", bio: "Dr. Kim has 15 years of experience in Computer Vision and Robotics. He leads the university's autonomous systems lab.", education: ["PhD Robotics, University of Michigan", "MSc Computer Vision, Georgia Tech", "BSc EE, UC San Diego"], publications: 67, researchInterests: ["Autonomous Navigation", "3D Object Detection", "Medical Imaging"], studentRating: 4.1, totalStudents: 200, rattrapageRate: 18 },
+  { id: "7", name: "Dr. Lisa Thompson", specialty: "Database Systems", weeklyHours: 24, performanceScore: 87, riskLevel: "Medium", email: "l.thompson@uni.edu", department: "Computer Science", courses: ["DBMS", "NoSQL", "Data Warehousing"], yearsOfService: 9, avatar: "LT", phone: "+1 (555) 890-1234", office: "Building B, Room 305", bio: "Dr. Thompson specializes in distributed database systems and data warehousing. She holds two patents in query optimization.", education: ["PhD Computer Science, University of Wisconsin-Madison", "MSc Database Systems, UC Santa Barbara", "BSc CS, University of Illinois"], publications: 29, researchInterests: ["Distributed Databases", "Query Optimization", "Graph Databases"], studentRating: 4.5, totalStudents: 155, rattrapageRate: 14 },
+  { id: "8", name: "Dr. Ahmed Nasser", specialty: "IoT & Embedded Systems", weeklyHours: 16, performanceScore: 92, riskLevel: "Low", email: "a.nasser@uni.edu", department: "Electrical Engineering", courses: ["Embedded Systems", "IoT Architecture"], yearsOfService: 4, avatar: "AN", phone: "+1 (555) 901-2345", office: "Building E, Room 102", bio: "Dr. Nasser is an emerging leader in IoT and edge computing. His smart campus project was featured in IEEE Spectrum.", education: ["PhD Electrical Engineering, TU Munich", "MSc Embedded Systems, KTH Stockholm", "BSc EE, Cairo University"], publications: 19, researchInterests: ["Edge Computing", "Smart Campus IoT", "RISC-V Architecture"], studentRating: 4.6, totalStudents: 75, rattrapageRate: 10 },
+];
+
+export const workloadData = [
+  { name: "Lun", hours: 32 },
+  { name: "Mar", hours: 45 },
+  { name: "Mer", hours: 38 },
+  { name: "Jeu", hours: 50 },
+  { name: "Ven", hours: 28 },
+];
+
+export const performanceData = [
+  { month: "Sep", score: 82 },
+  { month: "Oct", score: 85 },
+  { month: "Nov", score: 79 },
+  { month: "Déc", score: 88 },
+  { month: "Jan", score: 91 },
+  { month: "Fév", score: 87 },
+];
+
+export const departmentDistribution = [
+  { name: "Informatique", value: 4, fill: "hsl(215, 88%, 35%)" },
+  { name: "Recherche IA", value: 2, fill: "hsl(210, 20%, 65%)" },
+  { name: "Sécurité Info", value: 1, fill: "hsl(142, 71%, 45%)" },
+  { name: "Réseaux", value: 1, fill: "hsl(38, 92%, 50%)" },
+];
+
+export const aiInsights = [
+  { id: 1, type: "warning" as const, title: "Déséquilibre de charge détecté", description: "Dr. James Wilson et Dr. Robert Kim dépassent leur charge. Pensez à redistribuer les cours.", confidence: 94, timestamp: "Il y a 2h" },
+  { id: 2, type: "prediction" as const, title: "Baisse de performance prévue", description: "D'après les tendances, 2 enseignants pourraient voir une baisse de 10-15% au prochain semestre si la charge reste inchangée.", confidence: 87, timestamp: "Il y a 5h" },
+  { id: 3, type: "optimization" as const, title: "Optimisation de l'emploi du temps", description: "L'IA a trouvé un planning optimal réduisant les conflits de salles de 34%.", confidence: 91, timestamp: "Il y a 1 jour" },
+  { id: 4, type: "warning" as const, title: "Alerte d'épuisement professionnel", description: "Dr. Robert Kim présente des indicateurs de burn-out. Une réévaluation immédiate est recommandée.", confidence: 89, timestamp: "Il y a 1 jour" },
+  { id: 5, type: "prediction" as const, title: "Hausse des inscriptions", description: "Les cours de Machine Learning devraient connaître une augmentation de 40% des inscriptions.", confidence: 82, timestamp: "Il y a 2 jours" },
+  { id: 6, type: "optimization" as const, title: "Amélioration de l'allocation des ressources", description: "Réaffecter 2 sessions de TP pourrait économiser des ressources considérables.", confidence: 76, timestamp: "Il y a 3 jours" },
+];
+
+export const professorWorkloadChart = [
+  { name: "Dr. Chen", hours: 22, capacity: 24 },
+  { name: "Dr. Wilson", hours: 30, capacity: 24 },
+  { name: "Dr. Hassan", hours: 18, capacity: 24 },
+  { name: "Dr. Park", hours: 26, capacity: 24 },
+  { name: "Dr. Petrova", hours: 20, capacity: 24 },
+  { name: "Dr. Kim", hours: 28, capacity: 24 },
+  { name: "Dr. Thompson", hours: 24, capacity: 24 },
+  { name: "Dr. Nasser", hours: 16, capacity: 24 },
+];
+
+export interface ScheduleSlot {
+  id: string;
+  day: string;
+  timeSlot: string;
+  course: string;
+  professor: string;
+  room: string;
+  type: "cm" | "tp" | "td";
+  conflict?: boolean;
+}
+
+export const scheduleData: ScheduleSlot[] = [
+  { id: "s1", day: "Lundi", timeSlot: "08:00-09:30", course: "ML 101", professor: "Dr. Chen", room: "A-301", type: "cm" },
+  { id: "s2", day: "Lundi", timeSlot: "10:00-11:30", course: "Data Mining", professor: "Dr. Wilson", room: "B-205", type: "cm" },
+  { id: "s3", day: "Lundi", timeSlot: "13:00-14:30", course: "Sécurité Réseaux", professor: "Dr. Hassan", room: "C-110", type: "cm" },
+  { id: "s4", day: "Lundi", timeSlot: "15:00-16:30", course: "Principes GL", professor: "Dr. Park", room: "A-415", type: "cm" },
+  { id: "s5", day: "Mardi", timeSlot: "08:00-09:30", course: "Deep Learning", professor: "Dr. Chen", room: "A-301", type: "tp" },
+  { id: "s6", day: "Mardi", timeSlot: "10:00-11:30", course: "Statistiques", professor: "Dr. Wilson", room: "B-205", type: "cm" },
+  { id: "s7", day: "Mardi", timeSlot: "10:00-11:30", course: "Traitement d'Image", professor: "Dr. Kim", room: "D-310", type: "tp", conflict: true },
+  { id: "s8", day: "Mardi", timeSlot: "13:00-14:30", course: "Bases NLP", professor: "Dr. Petrova", room: "D-200", type: "cm" },
+  { id: "s9", day: "Mercredi", timeSlot: "08:00-09:30", course: "SGBD", professor: "Dr. Thompson", room: "B-300", type: "cm" },
+  { id: "s10", day: "Mercredi", timeSlot: "10:00-11:30", course: "Systèmes Embarqués", professor: "Dr. Nasser", room: "E-100", type: "tp" },
+  { id: "s11", day: "Mercredi", timeSlot: "13:00-14:30", course: "Éthique de l'IA", professor: "Dr. Chen", room: "A-301", type: "td" },
+  { id: "s12", day: "Mercredi", timeSlot: "15:00-16:30", course: "Big Data", professor: "Dr. Wilson", room: "B-205", type: "cm", conflict: true },
+  { id: "s13", day: "Jeudi", timeSlot: "08:00-09:30", course: "Cryptographie", professor: "Dr. Hassan", room: "C-110", type: "cm" },
+  { id: "s14", day: "Jeudi", timeSlot: "10:00-11:30", course: "Dev Agile", professor: "Dr. Park", room: "A-415", type: "td" },
+  { id: "s15", day: "Jeudi", timeSlot: "13:00-14:30", course: "Applications CV", professor: "Dr. Kim", room: "D-310", type: "cm" },
+  { id: "s16", day: "Jeudi", timeSlot: "15:00-16:30", course: "Ling. Informatique", professor: "Dr. Petrova", room: "D-200", type: "td" },
+  { id: "s17", day: "Vendredi", timeSlot: "08:00-09:30", course: "NoSQL", professor: "Dr. Thompson", room: "B-300", type: "tp" },
+  { id: "s18", day: "Vendredi", timeSlot: "10:00-11:30", course: "Architecture IoT", professor: "Dr. Nasser", room: "E-100", type: "cm" },
+  { id: "s19", day: "Vendredi", timeSlot: "13:00-14:30", course: "Cloud Computing", professor: "Dr. Park", room: "A-415", type: "tp" },
+  { id: "s20", day: "Vendredi", timeSlot: "15:00-16:30", course: "Robotique", professor: "Dr. Kim", room: "D-310", type: "tp" },
+];

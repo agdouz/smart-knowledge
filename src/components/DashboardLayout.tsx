@@ -1,0 +1,180 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  LayoutDashboard,
+  Users,
+  Calendar,
+  Brain,
+  Lightbulb,
+  FlaskConical,
+  Settings,
+  Search,
+  Bell,
+  Menu,
+  X,
+  Sparkles,
+  BookMarked,
+  GraduationCap,
+  UserCircle
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+const navItems = [
+  { label: "Tableau de Bord", icon: LayoutDashboard, path: "/dashboard" },
+  { label: "Professeurs", icon: Users, path: "/professors" },
+  { label: "Matières", icon: BookMarked, path: "/matieres" },
+  { label: "Filières", icon: GraduationCap, path: "/filieres" },
+  { label: "Emploi du temps", icon: Calendar, path: "/schedule" },
+  { label: "Module IA", icon: Brain, path: "/insights" },
+  { label: "Mon Espace", icon: UserCircle, path: "/espace-perso" },
+  { label: "Administration", icon: Settings, path: "/dashboard" },
+];
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
+
+  const NavContent = () => (
+    <div className="flex flex-col h-full">
+      <Link href="/" className="p-4 flex items-center gap-2 transition-opacity hover:opacity-80">
+        <div className="h-8 w-8 rounded-lg bg-primary/20 flex items-center justify-center">
+          <Sparkles className="h-4 w-4 text-primary" />
+        </div>
+        {sidebarOpen && (
+          <span className="font-semibold text-foreground text-sm tracking-tight">
+            Smart Knowledge
+          </span>
+        )}
+      </Link>
+
+      <nav className="flex-1 px-2 py-4 space-y-1">
+        {navItems.map((item) => {
+          const isActive = pathname === item.path;
+          return (
+            <Link
+              key={item.label}
+              href={item.path}
+              onClick={() => setMobileOpen(false)}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 group ${isActive
+                ? "bg-primary/10 text-primary"
+                : "text-muted-foreground hover:text-foreground hover:bg-secondary"
+                }`}
+            >
+              <item.icon className={`h-4 w-4 flex-shrink-0 ${isActive ? "text-primary" : ""}`} />
+              {sidebarOpen && <span>{item.label}</span>}
+              {isActive && sidebarOpen && (
+                <div className="ml-auto h-1.5 w-1.5 rounded-full bg-primary animate-pulse-glow" />
+              )}
+            </Link>
+          );
+        })}
+      </nav>
+
+      <div className="p-4 border-t border-border">
+        <div className="flex items-center gap-3">
+          <Avatar className="h-8 w-8">
+            <AvatarFallback className="bg-primary/20 text-primary text-xs">AD</AvatarFallback>
+          </Avatar>
+          {sidebarOpen && (
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-medium text-foreground truncate">Admin</p>
+              <p className="text-xs text-muted-foreground truncate">admin@uni.edu</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen flex bg-background">
+      {/* Desktop Sidebar */}
+      <aside
+        className={`hidden lg:flex flex-col border-r border-border bg-sidebar transition-all duration-300 ${sidebarOpen ? "w-60" : "w-16"
+          }`}
+      >
+        <NavContent />
+      </aside>
+
+      {/* Mobile Sidebar */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 lg:hidden"
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.aside
+              initial={{ x: -280 }}
+              animate={{ x: 0 }}
+              exit={{ x: -280 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="fixed left-0 top-0 bottom-0 w-60 bg-sidebar border-r border-border z-50 lg:hidden"
+            >
+              <NavContent />
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Main */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Top Bar */}
+        <header className="h-14 border-b border-border flex items-center justify-between px-4 lg:px-6 bg-card/50 backdrop-blur-sm sticky top-0 z-30">
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="lg:hidden"
+              onClick={() => setMobileOpen(true)}
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden lg:flex"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              {sidebarOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </Button>
+            <div className="relative hidden sm:block">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Rechercher..."
+                className="pl-9 w-64 bg-secondary border-border h-9 text-sm"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button variant="ghost" size="icon" className="relative">
+              <Bell className="h-4 w-4" />
+              <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-primary animate-pulse-glow" />
+            </Button>
+            <Avatar className="h-8 w-8">
+              <AvatarFallback className="bg-primary/20 text-primary text-xs">AD</AvatarFallback>
+            </Avatar>
+          </div>
+        </header>
+
+        {/* Page Content */}
+        <main className="flex-1 p-4 lg:p-6 overflow-auto">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+}
